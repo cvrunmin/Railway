@@ -7,7 +7,6 @@ import com.railwayteam.railways.registry.CRTrackMaterials;
 import com.railwayteam.railways.mixin_interfaces.IHasTrackCasing;
 import com.railwayteam.railways.registry.CRBlockPartials;
 import com.simibubi.create.content.logistics.trains.BezierConnection;
-import com.simibubi.create.content.logistics.trains.IHasTrackMaterial;
 import com.simibubi.create.content.logistics.trains.ITrackBlock;
 import com.simibubi.create.content.logistics.trains.management.edgePoint.EdgePointType;
 import com.simibubi.create.content.logistics.trains.track.*;
@@ -144,7 +143,7 @@ public class CustomTrackOverlayRendering {
         }
 
         //Shift for casings and monorails
-        if (bezierPoint == null && state.getBlock() instanceof IHasTrackMaterial material && material.getMaterial().trackType == CRTrackMaterials.CRTrackType.MONORAIL) {
+        if (bezierPoint == null && state.getBlock() instanceof ITrackBlock trackBlock && trackBlock.getMaterial().trackType == CRTrackMaterials.CRTrackType.MONORAIL) {
             msr.translate(0, 14/16f, 0);
         } else if (bezierPoint == null && world.getBlockEntity(pos) instanceof TrackTileEntity trackTE) {
             IHasTrackCasing casingTE = (IHasTrackCasing) trackTE;

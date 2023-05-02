@@ -67,7 +67,7 @@ public class CRBlocks {
         trackTags.add(AllTags.AllBlockTags.TRACKS.tag);
         if (material.trackType != CRTrackMaterials.CRTrackType.MONORAIL)
             trackTags.add(AllTags.AllBlockTags.GIRDABLE_TRACKS.tag);
-        return REGISTRATE.block("track_" + material.resourceName(), material::create)
+        return REGISTRATE.block("track_" + material.resourceName(), material::createBlock)
             .initialProperties(Material.STONE)
             .properties(p -> p.color(MaterialColor.METAL)
                 .strength(0.8F)
@@ -180,19 +180,19 @@ public class CRBlocks {
     public static final BlockEntry<TrackBlock> MONORAIL_TRACK = makeTrack(CRTrackMaterials.MONORAIL, new MonorailBlockStateGenerator()::generate);
 
     public static final BlockEntry<MonoBogeyBlock> MONO_BOGEY =
-        REGISTRATE.block("mono_bogey", p -> new MonoBogeyBlock(p, false))
+        REGISTRATE.block("mono_bogey", MonoBogeyBlock::new)
             .properties(p -> p.color(MaterialColor.PODZOL))
             .transform(BuilderTransformers.monobogey(false))
             .lang("Monorail Bogey")
             .register();
 
-
+/*
     public static final BlockEntry<MonoBogeyBlock> MONO_BOGEY_UPSIDE_DOWN =
         REGISTRATE.block("mono_bogey_upside_down", p -> new MonoBogeyBlock(p, true))
             .properties(p -> p.color(MaterialColor.PODZOL))
             .transform(BuilderTransformers.monobogey(true))
             .lang("Upside Down Monorail Bogey")
-            .register();
+            .register();*/
 
     public static final BlockEntry<ConductorWhistleFlagBlock> CONDUCTOR_WHISTLE_FLAG =
         REGISTRATE.block("conductor_whistle", ConductorWhistleFlagBlock::new)

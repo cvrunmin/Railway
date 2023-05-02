@@ -1,7 +1,7 @@
 package com.railwayteam.railways.content.custom_tracks;
 
 import com.railwayteam.railways.Railways;
-import com.simibubi.create.content.logistics.trains.IHasTrackMaterial;
+import com.simibubi.create.content.logistics.trains.ITrackBlock;
 import com.simibubi.create.content.logistics.trains.TrackMaterial;
 import com.simibubi.create.content.logistics.trains.track.TrackBlock;
 import com.simibubi.create.content.logistics.trains.track.TrackShape;
@@ -31,7 +31,7 @@ public class CustomTrackBlockStateGenerator extends SpecialBlockStateGen {
   @Override
   public <T extends Block> ModelFile getModel(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov, BlockState state) {
     TrackShape value = state.getValue(TrackBlock.SHAPE);
-    TrackMaterial material = ((IHasTrackMaterial) ctx.getEntry()).getMaterial();
+    TrackMaterial material = ((ITrackBlock) ctx.getEntry()).getMaterial();
     //Railways.LOGGER.warn("TrackShape: "+value.name()+", material: "+material.langName);
     if (value == TrackShape.NONE) {
       return prov.models()

@@ -36,7 +36,7 @@ public class CRBlockEntities {
     public static final BlockEntityEntry<MonoBogeyTileEntity> MONO_BOGEY = REGISTRATE
         .tileEntity("mono_bogey", MonoBogeyTileEntity::new)
         .renderer(() -> BogeyTileEntityRenderer::new)
-        .validBlocks(CRBlocks.MONO_BOGEY, CRBlocks.MONO_BOGEY_UPSIDE_DOWN)
+        .validBlocks(CRBlocks.MONO_BOGEY)//, CRBlocks.MONO_BOGEY_UPSIDE_DOWN)
         .register();
 
     public static final BlockEntityEntry<ConductorWhistleFlagTileEntity> CONDUCTOR_WHISTLE_FLAG = REGISTRATE.tileEntity("conductor_whistle", ConductorWhistleFlagTileEntity::new)

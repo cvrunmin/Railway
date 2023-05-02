@@ -1,23 +1,6 @@
 package com.railwayteam.railways.mixin.client;
 
-import com.jozufozu.flywheel.api.MaterialManager;
-import com.jozufozu.flywheel.core.Materials;
-import com.jozufozu.flywheel.core.materials.model.ModelData;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.railwayteam.railways.mixin_interfaces.IBogeyFrameCanBeMonorail;
-import com.railwayteam.railways.registry.CRBlockPartials;
-import com.simibubi.create.content.logistics.trains.entity.BogeyInstance;
-import com.simibubi.create.content.logistics.trains.entity.CarriageBogey;
-import com.simibubi.create.foundation.utility.Iterate;
-import org.spongepowered.asm.mixin.Final;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Mutable;
-import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-@Mixin(value = BogeyInstance.Frame.class, remap = false) //TODO bogey api
+/*@Mixin(value = BogeyInstance.Frame.class, remap = false) //TODO _bogey api
 public class MixinBogeyInstance_Frame implements IBogeyFrameCanBeMonorail<BogeyInstance.Frame> {
     @Mutable
     @Shadow @Final private ModelData frame;
@@ -92,7 +75,7 @@ public class MixinBogeyInstance_Frame implements IBogeyFrameCanBeMonorail<BogeyI
             float wheelY = isMonorailUpsideDown ? 35 /16f : 3 / 16f;
             if (isMonorailUpsideDown != isLeadingBogeyUpsideDown)
                 wheelY += isLeadingBogeyUpsideDown ? 2 : -2;*/
-
+/*
             float wheelY = 3 / 16f;
 
             for (boolean left : Iterate.trueAndFalse) {
@@ -106,3 +89,4 @@ public class MixinBogeyInstance_Frame implements IBogeyFrameCanBeMonorail<BogeyI
         }
     }
 }
+*/

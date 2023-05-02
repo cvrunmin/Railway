@@ -2,8 +2,6 @@ package com.railwayteam.railways.content.coupling.coupler;
 
 import com.railwayteam.railways.Railways;
 import com.railwayteam.railways.content.coupling.TrainUtils;
-import com.railwayteam.railways.content.custom_bogeys.monobogey.IPotentiallyUpsideDownBogeyBlock;
-import com.railwayteam.railways.mixin.AccessorCarriageBogey;
 import com.railwayteam.railways.mixin.AccessorTrackTargetingBehavior;
 import com.railwayteam.railways.registry.CREdgePointTypes;
 import com.railwayteam.railways.registry.CRPackets;
@@ -279,7 +277,8 @@ public class TrackCouplerTileEntity extends SmartTileEntity implements ITransfor
         TravellingPoint relevantPoint = leading ? carriage.leadingBogey().leading() : carriage.trailingBogey().trailing();
         TravellingPoint relevantPoint2 = leading ? carriage.leadingBogey().trailing() : carriage.trailingBogey().leading();
         CarriageBogey relevantBogey = leading ? carriage.leadingBogey() : carriage.trailingBogey();
-        boolean upsideDown = ((AccessorCarriageBogey) relevantBogey).getType() instanceof IPotentiallyUpsideDownBogeyBlock pudb && pudb.isUpsideDown();
+        //boolean upsideDown = ((AccessorCarriageBogey) relevantBogey).getType() instanceof IPotentiallyUpsideDownBogeyBlock pudb && pudb.isUpsideDown();
+        boolean upsideDown = relevantBogey.isUpsideDown();
         double couplerPosition = coupler.getLocationOn(relevantPoint.edge);
         Vec3 wheelPosition = relevantPoint.getPosition().add(relevantPoint2.getPosition()).scale(0.5).add(0, upsideDown ? 2 : 0, 0);
         Vec3 couplerSpatialPosition = Vec3.atBottomCenterOf(edgePoint.getGlobalPosition().above());

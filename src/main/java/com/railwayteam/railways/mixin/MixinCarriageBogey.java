@@ -1,5 +1,5 @@
 package com.railwayteam.railways.mixin;
-
+/*
 import com.railwayteam.railways.mixin_interfaces.IBogeyTypeAwareTravellingPoint;
 import com.simibubi.create.content.logistics.trains.IBogeyBlock;
 import com.simibubi.create.content.logistics.trains.entity.Carriage;
@@ -24,6 +24,7 @@ public class MixinCarriageBogey {
 
     @Inject(method = {"leading", "trailing"}, at = @At("HEAD"))
     private void setTravellingPointTypes(CallbackInfoReturnable<TravellingPoint> cir) {
-        points.forEach(point -> ((IBogeyTypeAwareTravellingPoint) point).setType(((AccessorCarriageBogey) carriage.leadingBogey()).getType())); //TODO bogey api
+        points.forEach(point -> ((IBogeyTypeAwareTravellingPoint) point).setType(((AccessorCarriageBogey) carriage.leadingBogey()).getType())); //TODO _bogey api
     }
 }
+*/

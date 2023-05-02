@@ -1,9 +1,7 @@
 package com.railwayteam.railways.mixin;
-
-import com.railwayteam.railways.content.custom_bogeys.monobogey.IPotentiallyUpsideDownBogeyBlock;
+/*
 import com.railwayteam.railways.mixin_interfaces.IBogeyTypeAwareTravellingPoint;
 import com.simibubi.create.content.logistics.trains.DimensionPalette;
-import com.simibubi.create.content.logistics.trains.IBogeyBlock;
 import com.simibubi.create.content.logistics.trains.TrackGraph;
 import com.simibubi.create.content.logistics.trains.entity.TravellingPoint;
 import com.simibubi.create.foundation.utility.RegisteredObjects;
@@ -20,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(value = TravellingPoint.class, remap = false)
-public class MixinTravellingPoint implements IBogeyTypeAwareTravellingPoint { //TODO bogey api
+public class MixinTravellingPoint implements IBogeyTypeAwareTravellingPoint { //TODO _bogey api
 
     private IBogeyBlock type;
 
@@ -57,3 +55,4 @@ public class MixinTravellingPoint implements IBogeyTypeAwareTravellingPoint { //
         return instance.scale(pFactor);
     }
 }
+*/

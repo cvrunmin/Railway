@@ -5,7 +5,6 @@
   "refmap": "mixins.railways.refmap.json",
   "mixins": [
     "AccessorCarriage",
-    "AccessorCarriageBogey",
     "AccessorCarriageContraptionEntity",
     "AccessorNavigation",
     "AccessorScheduleRuntime",
@@ -17,7 +16,6 @@
     "MixinBlazeBurnerInteractionBehaviour",
     "MixinBlockBehaviour",
     "MixinCarriage",
-    "MixinCarriageBogey",
     "MixinGlobalStation",
     "MixinNavigation",
     "MixinScheduleItem",
@@ -35,16 +33,12 @@
     "MixinTrackTargetingBlockItem$MixinOverlapResult",
     "MixinTrackTileEntity",
     "MixinTrain",
-    "MixinTravellingPoint"
   ],
   "client": [
-    "client.AccessorBogeyInstance",
     "client.AccessorInstance",
     "client.AccessorToolboxHandlerClient",
     "client.MixinBezierConnectionClient",
-    "client.MixinBogeyInstance_Frame",
     "client.MixinCarriageContraptionEntity",
-    "client.MixinCarriageContraptionEntityRenderer",
     "client.MixinCarriageContraptionInstance",
     "client.MixinCurvedTrackInteraction",
     "client.MixinGlobalRailwayManager",
@@ -60,7 +54,6 @@
     "client.MixinTrackTargetingClient",
     "client.MixinTrainHatOffsets",
     "client.MixinTrainPacket",
-    "client.MixinTrainRelocatorClient"
   ],
   "minVersion": "0.8"
 }

@@ -28,3 +28,5 @@ forge*changelog.txt
 # Custom
 /src/main/resources/assets/create/
 /libs/
+/jars/
+/changelog.html

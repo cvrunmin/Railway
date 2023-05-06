@@ -10,6 +10,8 @@ import com.railwayteam.railways.content.semaphore.SemaphoreBlockEntity;
 import com.railwayteam.railways.content.semaphore.SemaphoreRenderer;
 import com.railwayteam.railways.content.smokestack.DieselSmokeStackRenderer;
 import com.railwayteam.railways.content.smokestack.DieselSmokeStackTileEntity;
+import com.railwayteam.railways.content.switches.TrackSwitchRenderer;
+import com.railwayteam.railways.content.switches.TrackSwitchTileEntity;
 import com.railwayteam.railways.content.tender.TenderBlockEntity;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.logistics.trains.BogeyTileEntityRenderer;
@@ -32,6 +34,16 @@ public class CRBlockEntities {
         .validBlocks(CRBlocks.TRACK_COUPLER)
         .renderer(() -> TrackCouplerRenderer::new)
         .register();
+
+    public static final BlockEntityEntry<TrackSwitchTileEntity> ANDESITE_SWITCH = REGISTRATE.tileEntity("track_switch_andesite", TrackSwitchTileEntity::new)
+      .validBlocks(CRBlocks.ANDESITE_SWITCH)
+      .renderer(() -> TrackSwitchRenderer::new)
+      .register();
+
+    public static final BlockEntityEntry<TrackSwitchTileEntity> BRASS_SWITCH = REGISTRATE.tileEntity("track_switch_brass", TrackSwitchTileEntity::new)
+      .validBlocks(CRBlocks.BRASS_SWITCH)
+      .renderer(() -> TrackSwitchRenderer::new)
+      .register();
 
     public static final BlockEntityEntry<MonoBogeyTileEntity> MONO_BOGEY = REGISTRATE
         .tileEntity("mono_bogey", MonoBogeyTileEntity::new)

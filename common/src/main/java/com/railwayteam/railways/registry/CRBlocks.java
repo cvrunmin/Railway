@@ -10,6 +10,8 @@ import com.railwayteam.railways.content.coupling.coupler.TrackCouplerBlockItem;
 import com.railwayteam.railways.content.custom_bogeys.monobogey.MonoBogeyBlock;
 import com.railwayteam.railways.content.custom_tracks.CustomTrackBlock;
 import com.railwayteam.railways.content.custom_tracks.CustomTrackBlockStateGenerator;
+import com.railwayteam.railways.content.switches.TrackSwitchBlock;
+import com.railwayteam.railways.content.switches.TrackSwitchBlockItem;
 import com.railwayteam.railways.track_api.TrackMaterial;
 import com.railwayteam.railways.content.custom_tracks.monorail.MonorailBlockStateGenerator;
 import com.railwayteam.railways.content.semaphore.SemaphoreBlock;
@@ -166,6 +168,42 @@ public class CRBlocks {
             .item(TrackCouplerBlockItem.ofType(CREdgePointTypes.COUPLER))
             .transform(customItemModel("_", "block_both"))
             .register();
+
+    public static final BlockEntry<TrackSwitchBlock> ANDESITE_SWITCH =
+      REGISTRATE.block("track_switch_andesite", TrackSwitchBlock::manual)
+        .initialProperties(SharedProperties::softMetal)
+        .blockstate((c, p) -> p.getVariantBuilder(c.get())
+          .forAllStates(state -> ConfiguredModel.builder()
+            .modelFile(p.models().getExistingFile(Railways.asResource("block/track_switch_andesite/block")))
+            .rotationY(((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot() + 90) % 360)
+            .build()))
+        .properties(p -> p.color(MaterialColor.PODZOL))
+        .properties(p -> p.noOcclusion())
+        .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
+        .transform(pickaxeOnly())
+        .lang("Andesite Track Switch")
+        .item(TrackSwitchBlockItem.ofType(CREdgePointTypes.SWITCH))
+        .transform(customItemModel())
+        .register()
+      ;
+
+    public static final BlockEntry<TrackSwitchBlock> BRASS_SWITCH =
+      REGISTRATE.block("track_switch_brass", TrackSwitchBlock::automatic)
+        .initialProperties(SharedProperties::softMetal)
+        .blockstate((c, p) -> p.getVariantBuilder(c.get())
+          .forAllStates(state -> ConfiguredModel.builder()
+            .modelFile(p.models().getExistingFile(Railways.asResource("block/track_switch_brass/block")))
+            .rotationY(((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot() + 90) % 360)
+            .build()))
+        .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
+        .properties(p -> p.noOcclusion())
+        .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
+        .transform(pickaxeOnly())
+        .lang("Brass Track Switch")
+        .item(TrackSwitchBlockItem.ofType(CREdgePointTypes.SWITCH))
+        .transform(customItemModel())
+        .register()
+      ;
 
     public static final BlockEntry<CustomTrackBlock> ACACIA_TRACK = makeTrack(CRTrackMaterials.ACACIA);
     public static final BlockEntry<CustomTrackBlock> BIRCH_TRACK = makeTrack(CRTrackMaterials.BIRCH);

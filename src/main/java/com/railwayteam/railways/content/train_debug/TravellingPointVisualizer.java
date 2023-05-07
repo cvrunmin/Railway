@@ -1,11 +1,14 @@
 package com.railwayteam.railways.content.train_debug;
 
+import com.mojang.math.Vector3f;
 import com.simibubi.create.CreateClient;
 import com.simibubi.create.content.logistics.trains.entity.Carriage;
 import com.simibubi.create.content.logistics.trains.entity.CarriageBogey;
 import com.simibubi.create.content.logistics.trains.entity.Train;
 import com.simibubi.create.foundation.utility.Color;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.phys.AABB;
 
@@ -32,16 +35,20 @@ public class TravellingPointVisualizer {
                             .colored(color)
                             .lineWidth(18/16f);*/
                         int extent = 2;
+                        int yRaise = 0;
+                        cameraEntity.level.addParticle(ParticleTypes.END_ROD, bogey.getAnchorPosition().x, bogey.getAnchorPosition().y, bogey.getAnchorPosition().z, 0, 0, 0);
+                        cameraEntity.level.addParticle(new DustParticleOptions(new Vector3f(1.0f, 0.0f, 0.0f), 2.0f), bogey.leading().getPosition().x, bogey.leading().getPosition().y, bogey.leading().getPosition().z, 0, bogey.leading().upsideDown ? 2 : -2, 0);
+                        cameraEntity.level.addParticle(new DustParticleOptions(new Vector3f(0.0f, 0.0f, 1.0f), 2.0f), bogey.trailing().getPosition().x, bogey.trailing().getPosition().y, bogey.trailing().getPosition().z, 0, bogey.trailing().upsideDown ? 2 : -2, 0);
                         CreateClient.OUTLINER.showLine(Integer.valueOf(carriage.id * 8 + (bogey == carriage.leadingBogey() ? 0 : 1) * 4 + 0),
-                                bogey.getAnchorPosition().add(0, extent, 0), bogey.getAnchorPosition().add(0, -extent, 0))
+                                bogey.getAnchorPosition().add(0, extent+yRaise, 0), bogey.getAnchorPosition().add(0, -extent+yRaise, 0))
                             .colored(color)
                             .lineWidth(4/16f);
                         CreateClient.OUTLINER.showLine(Integer.valueOf(carriage.id * 8 + (bogey == carriage.leadingBogey() ? 0 : 1) * 4 + 1),
-                                bogey.getAnchorPosition().add(extent, 0, 0), bogey.getAnchorPosition().add(-extent, 0, 0))
+                                bogey.getAnchorPosition().add(extent, 0+yRaise, 0), bogey.getAnchorPosition().add(-extent, 0+yRaise, 0))
                             .colored(color)
                             .lineWidth(4/16f);
                         CreateClient.OUTLINER.showLine(Integer.valueOf(carriage.id * 8 + (bogey == carriage.leadingBogey() ? 0 : 1) * 4 + 2),
-                                bogey.getAnchorPosition().add(0, 0, extent), bogey.getAnchorPosition().add(0, 0, -extent))
+                                bogey.getAnchorPosition().add(0, 0+yRaise, extent), bogey.getAnchorPosition().add(0, 0+yRaise, -extent))
                             .colored(color)
                             .lineWidth(4/16f);
                     }

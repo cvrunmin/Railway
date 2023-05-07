@@ -31,7 +31,7 @@ public class CRItems {
   };
 
   static {
-    REGISTRATE.creativeModeTab(() -> itemGroup, "Create Railways");
+    REGISTRATE.creativeModeTab(() -> itemGroup, "Create Steam 'n Rails");
   }
 
   public static final TagKey<Item> CONDUCTOR_CAPS = CRTags.AllItemTags.CONDUCTOR_CAPS.tag;//makeItemTag(Railways.MODID, "conductor_caps");

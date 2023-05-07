@@ -1,10 +1,13 @@
 package com.railwayteam.railways.content.custom_bogeys.monobogey;
 
+import com.google.common.collect.ImmutableList;
 import com.railwayteam.railways.registry.CRBlockEntities;
 import com.railwayteam.railways.registry.CRBogeyStyles;
+import com.railwayteam.railways.registry.CRTrackMaterials;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.logistics.trains.AbstractBogeyBlock;
 import com.simibubi.create.content.logistics.trains.BogeySizes;
+import com.simibubi.create.content.logistics.trains.TrackMaterial;
 import com.simibubi.create.content.logistics.trains.entity.BogeyStyle;
 import com.simibubi.create.content.schematics.ISpecialBlockItemRequirement;
 import com.simibubi.create.foundation.block.ITE;
@@ -20,10 +23,12 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
@@ -47,6 +52,11 @@ public class MonoBogeyBlock extends AbstractBogeyBlock<MonoBogeyTileEntity> impl
             return CRBlocks.MONO_BOGEY.getDefaultState().setValue(AXIS, base.getValue(AXIS))
                 .setValue(WATERLOGGED, base.getOptionalValue(WATERLOGGED).orElse(false));
         }*/
+    }
+
+    @Override
+    public TrackMaterial.TrackType getTrackType(BogeyStyle style) {
+        return CRTrackMaterials.CRTrackType.MONORAIL;
     }
 
     @Override
@@ -165,5 +175,10 @@ public class MonoBogeyBlock extends AbstractBogeyBlock<MonoBogeyTileEntity> impl
     @Override
     public boolean isUpsideDown(BlockState state) {
         return state.hasProperty(UPSIDE_DOWN) && state.getValue(UPSIDE_DOWN);
+    }
+
+    @Override
+    public List<Property<?>> propertiesToCopy() {
+        return ImmutableList.<Property<?>>builder().addAll(super.propertiesToCopy()).add(UPSIDE_DOWN).build();
     }
 }

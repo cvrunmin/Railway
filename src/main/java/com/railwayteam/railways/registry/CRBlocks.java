@@ -48,6 +48,7 @@ import net.minecraftforge.client.model.generators.ConfiguredModel;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.railwayteam.railways.registry.CRItems.itemGroup;
 import static com.simibubi.create.content.logistics.block.display.AllDisplayBehaviours.assignDataBehaviour;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.axeOnly;
@@ -56,6 +57,10 @@ import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 public class CRBlocks {
 
     private static final CreateRegistrate REGISTRATE = Railways.registrate();
+
+    static {
+        REGISTRATE.creativeModeTab(() -> itemGroup);
+    }
 
     private static BlockEntry<TrackBlock> makeTrack(TrackMaterial material) {
         return makeTrack(material, new CustomTrackBlockStateGenerator()::generate);

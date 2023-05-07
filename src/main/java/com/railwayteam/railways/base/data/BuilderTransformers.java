@@ -20,7 +20,7 @@ public class BuilderTransformers {
             .transform(pickaxeOnly())
             .blockstate((c, p) -> BlockStateGen.horizontalAxisBlock(c, p, s -> p.models()
                 .getExistingFile(p.modLoc("block/bogey/monorail/top" + (s.getValue(MonoBogeyBlock.UPSIDE_DOWN) ? "_upside_down" : "")))))
-            .loot((p, l) -> p.dropOther(l, AllBlocks.RAILWAY_CASING.get()))
-            .onRegister(block -> AbstractBogeyBlock.register(RegisteredObjects.getKeyOrThrow(block)));
+            .loot((p, l) -> p.dropOther(l, AllBlocks.RAILWAY_CASING.get()));
+//            .onRegister(block -> AbstractBogeyBlock.register(RegisteredObjects.getKeyOrThrow(block)));
     }
 }

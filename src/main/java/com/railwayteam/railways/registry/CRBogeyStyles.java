@@ -10,17 +10,17 @@ import net.minecraft.resources.ResourceLocation;
 
 public class CRBogeyStyles {
 
-    public static final BogeyStyle MONOBOGEY = create("monobogey")
-        .displayName(Components.translatable("railways.bogeys.styles.standard"))
+    public static final BogeyStyle MONOBOGEY = create("monobogey", "monobogey")
+        .displayName(Components.translatable("railways.bogeys.styles.monobogey"))
         .size(BogeySizes.SMALL, MonoBogeyRenderer.SmallMonoBogeyRenderer::new, CRBlocks.MONO_BOGEY)
         .build();
 
-    public static AllBogeyStyles.BogeyStyleBuilder create(String name) {
-        return create(Railways.asResource(name));
+    public static AllBogeyStyles.BogeyStyleBuilder create(String name, String cycleGroup) {
+        return create(Railways.asResource(name), Railways.asResource(cycleGroup));
     }
 
-    public static AllBogeyStyles.BogeyStyleBuilder create(ResourceLocation name) {
-        return new AllBogeyStyles.BogeyStyleBuilder(name);
+    public static AllBogeyStyles.BogeyStyleBuilder create(ResourceLocation name, ResourceLocation cycleGroup) {
+        return new AllBogeyStyles.BogeyStyleBuilder(name, cycleGroup);
     }
 
     public static void register() {

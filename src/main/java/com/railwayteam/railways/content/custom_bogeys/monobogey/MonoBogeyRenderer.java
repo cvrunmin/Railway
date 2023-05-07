@@ -32,34 +32,37 @@ public class MonoBogeyRenderer {
         }
 
         @Override
-        public void render(boolean upsideDown, CompoundTag bogeyData, float wheelAngle, PoseStack ms, int light, VertexConsumer vb) {
-            boolean inContraption = vb == null;
-            Transform<?> transform = getTransformFromPartial(MONOBOGEY_FRAME, ms, inContraption);
+        public void render(boolean upsideDown, CompoundTag bogeyData, float wheelAngle, PoseStack ms, int light, VertexConsumer vb, boolean inContraption) {
+            boolean inInstancedContraption = vb == null;
+            boolean specialUpsideDown = !inContraption && upsideDown; // tile entity renderer needs special handling
+            Transform<?> transform = getTransformFromPartial(MONOBOGEY_FRAME, ms, inInstancedContraption)
+                .rotateZ(specialUpsideDown ? 180 : 0)
+                .translateY(specialUpsideDown ? -3 : 0);
             finalize(transform, ms, light, vb);
 
-            Transform<?>[] wheels = getTransformsFromPartial(MONOBOGEY_WHEEL, ms, inContraption, 4);
+            Transform<?>[] wheels = getTransformsFromPartial(MONOBOGEY_WHEEL, ms, inInstancedContraption, 4);
             /*for (int side : Iterate.positiveAndNegative) {
-                if (!inContraption)
+                if (!inInstancedContraption)
                     ms.pushPose();
                 Transform<?> wheel = wheels[(side + 1) / 2];
                 wheel.translate(0, 12 / 16f, side)
                     .rotateX(wheelAngle);
                 finalize(wheel, ms, light, vb);
-                if (!inContraption)
+                if (!inInstancedContraption)
                     ms.popPose();
             }*/
             for (boolean left : Iterate.trueAndFalse) {
                 for (int front : Iterate.positiveAndNegative) {
-                    if (!inContraption)
+                    if (!inInstancedContraption)
                         ms.pushPose();
                     Transform<?> wheel = wheels[(left ? 1 : 0) + (front + 1)];
-                    wheel.translate(left ? -12 / 16f : 12 / 16f, upsideDown ? 3 /16f : 3 / 16f, front * 15 / 16f) //base position
+                    wheel.translate(left ? -12 / 16f : 12 / 16f, specialUpsideDown ? 35 /16f : 3 / 16f, front * 15 / 16f) //base position
                         .rotateY(left ? wheelAngle : -wheelAngle)
                         .translate(15/16f, 0, 0/16f);
                     finalize(wheel, ms, light, vb);
 //                        .light(light)
   //                      .renderInto(ms, vb);
-                    if (!inContraption)
+                    if (!inInstancedContraption)
                         ms.popPose();
                 }
             }

@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.phys.Vec3;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -38,7 +39,7 @@ public abstract class MixinTrackTargetingClient {
         remap = false,
         ordinal = 0
     ), cancellable = true, remap = false)
-    private static void renderCustom(PoseStack ms, SuperRenderTypeBuffer buffer, CallbackInfo ci) {
+    private static void renderCustom(PoseStack ms, SuperRenderTypeBuffer buffer, Vec3 camera, CallbackInfo ci) {
         if (CustomTrackOverlayRendering.CUSTOM_OVERLAYS.containsKey(lastType)) {
             Minecraft mc = Minecraft.getInstance();
             BlockPos pos = lastHovered;
@@ -46,7 +47,7 @@ public abstract class MixinTrackTargetingClient {
             Direction.AxisDirection direction = lastDirection ? Direction.AxisDirection.POSITIVE : Direction.AxisDirection.NEGATIVE;
 
             CustomTrackOverlayRendering.renderOverlay(mc.level, pos, direction, lastHoveredBezierSegment, ms, buffer, light,
-                OverlayTexture.NO_OVERLAY, lastType, 1 + 1 / 16f);
+                OverlayTexture.NO_OVERLAY, lastType, 1 + 1 / 16f, camera);
             ci.cancel();
         }
     }

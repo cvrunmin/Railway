@@ -15,7 +15,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.items.ItemHandlerHelper;
 import org.jetbrains.annotations.Nullable;
 
-public class CustomTrackBlock {
+public class CustomTrackBlock { //fixme using a brass hand on a track should call TrackPropagator.onRailAdded to update materials
 
   @Nullable
   public static InteractionResult casingUse(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {

@@ -22,6 +22,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
 
 public class ConductorWhistleFlagRenderer extends SmartTileEntityRenderer<ConductorWhistleFlagTileEntity> {
     public ConductorWhistleFlagRenderer(BlockEntityRendererProvider.Context context) {
@@ -53,7 +54,7 @@ public class ConductorWhistleFlagRenderer extends SmartTileEntityRenderer<Conduc
         ms.pushPose();
         ms.translate(-pos.getX(), -pos.getY(), -pos.getZ());
         CustomTrackOverlayRendering.renderOverlay(level, targetPosition, target.getTargetDirection(), target.getTargetBezier(), ms,
-            buffer, light, overlay, AllBlockPartials.TRACK_STATION_OVERLAY, 1, false); //TODO real model
+            buffer, light, overlay, AllBlockPartials.TRACK_STATION_OVERLAY, 1, false, Vec3.ZERO); //TODO real model
         ms.popPose();
     }
 }

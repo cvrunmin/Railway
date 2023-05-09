@@ -11,6 +11,7 @@ import net.minecraft.nbt.CompoundTag;
 
 import static com.railwayteam.railways.registry.CRBlockPartials.MONOBOGEY_FRAME;
 import static com.railwayteam.railways.registry.CRBlockPartials.MONOBOGEY_WHEEL;
+import static com.simibubi.create.content.logistics.trains.entity.CarriageBogey.UPSIDE_DOWN_KEY;
 
 public class MonoBogeyRenderer {
     public static class SmallMonoBogeyRenderer extends BogeyRenderer {
@@ -22,17 +23,13 @@ public class MonoBogeyRenderer {
         }
 
         @Override
-        public BogeyRenderer createNewInstance() {
-            return new SmallMonoBogeyRenderer();
-        }
-
-        @Override
         public BogeySizes.BogeySize getSize() {
             return BogeySizes.SMALL;
         }
 
         @Override
-        public void render(boolean upsideDown, CompoundTag bogeyData, float wheelAngle, PoseStack ms, int light, VertexConsumer vb, boolean inContraption) {
+        public void render(CompoundTag bogeyData, float wheelAngle, PoseStack ms, int light, VertexConsumer vb, boolean inContraption) {
+            boolean upsideDown = bogeyData.getBoolean(UPSIDE_DOWN_KEY);
             boolean inInstancedContraption = vb == null;
             boolean specialUpsideDown = !inContraption && upsideDown; // tile entity renderer needs special handling
             Transform<?> transform = getTransformFromPartial(MONOBOGEY_FRAME, ms, inInstancedContraption)

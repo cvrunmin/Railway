@@ -49,23 +49,23 @@ public class CustomTrackOverlayRendering {
     @OnlyIn(Dist.CLIENT)
     public static void renderOverlay(LevelAccessor level, BlockPos pos, Direction.AxisDirection direction,
                                      BezierTrackPointLocation bezier, PoseStack ms, MultiBufferSource buffer, int light, int overlay,
-                                     EdgePointType<?> type, float scale) {
+                                     EdgePointType<?> type, float scale, Vec3 camera) {
         if (CUSTOM_OVERLAYS.containsKey(type))
-            renderOverlay(level, pos, direction, bezier, ms, buffer, light, overlay, CUSTOM_OVERLAYS.get(type), scale, false);
+            renderOverlay(level, pos, direction, bezier, ms, buffer, light, overlay, CUSTOM_OVERLAYS.get(type), scale, false, camera);
     }
 
     @OnlyIn(Dist.CLIENT)
     public static void renderOverlay(LevelAccessor level, BlockPos pos, Direction.AxisDirection direction,
                                      BezierTrackPointLocation bezier, PoseStack ms, MultiBufferSource buffer, int light, int overlay,
-                                     PartialModel model, float scale) {
-        renderOverlay(level, pos, direction, bezier, ms, buffer, light, overlay, model, scale, false);
+                                     PartialModel model, float scale, Vec3 camera) {
+        renderOverlay(level, pos, direction, bezier, ms, buffer, light, overlay, model, scale, false, camera);
     }
 
     //Copied from TrackTargetingBehaviour
     @OnlyIn(Dist.CLIENT)
     public static void renderOverlay(LevelAccessor level, BlockPos pos, Direction.AxisDirection direction,
                               BezierTrackPointLocation bezier, PoseStack ms, MultiBufferSource buffer, int light, int overlay,
-                              PartialModel model, float scale, boolean offsetToSide) {
+                              PartialModel model, float scale, boolean offsetToSide, Vec3 camera) {
         if (level instanceof SchematicWorld && !(level instanceof PonderWorld))
             return;
 
@@ -77,7 +77,7 @@ public class CustomTrackOverlayRendering {
         ms.pushPose();
         ms.translate(pos.getX(), pos.getY(), pos.getZ());
 
-        PartialModel partial = prepareTrackOverlay(level, pos, trackState, bezier, direction, ms, model);
+        PartialModel partial = prepareTrackOverlay(level, pos, trackState, bezier, direction, ms, model, camera);
         if (partial != null)
             CachedBufferer.partial(partial, trackState)
                 .translate(.5, 0, .5)
@@ -92,7 +92,8 @@ public class CustomTrackOverlayRendering {
     //Copied from TrackBlock
     @OnlyIn(Dist.CLIENT)
     public static PartialModel prepareTrackOverlay(BlockGetter world, BlockPos pos, BlockState state,
-                                            BezierTrackPointLocation bezierPoint, Direction.AxisDirection direction, PoseStack ms, PartialModel model) {
+                                                    BezierTrackPointLocation bezierPoint, Direction.AxisDirection direction,
+                                                    PoseStack ms, PartialModel model, Vec3 camera) {
         TransformStack msr = TransformStack.cast(ms);
 
         Vec3 axis = null;
@@ -115,7 +116,7 @@ public class CustomTrackOverlayRendering {
                     .subtract(bc.getPosition(tpre))
                     .normalize();
 
-                msr.translate(offset.subtract(Vec3.atBottomCenterOf(pos)));
+                msr.translate(offset.subtract(Vec3.atBottomCenterOf(pos).subtract(camera)));
                 msr.translate(0, -4 / 16f, 0);
                 // Translate more for slabs or monorails
                 IHasTrackCasing casingBc = (IHasTrackCasing) bc;

@@ -40,7 +40,7 @@ public class MixinSuperGlueSelectionHandler {
                 CreateClient.OUTLINER.showCluster(clusterOutlineSlot, cluster)
                     .colored(CONTROL_HIGHLIGHT)
                     .withFaceTextures(AllSpecialTextures.GLUE, AllSpecialTextures.HIGHLIGHT_CHECKERED)
-                    .disableNormals()
+                    .disableLineNormals()
                     .lineWidth(1 / 24f);
 
                 clusterCooldown = 10;

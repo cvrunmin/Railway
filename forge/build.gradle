@@ -30,6 +30,8 @@ configurations {
 repositories {
     // mavens for Forge-exclusives
     maven { url = "https://maven.theillusivec4.top/" } // Curios
+    maven { url "https://maven.firstdarkdev.xyz/snapshots" } // Shimmer
+    maven { url = "https://jitpack.io/" } // Mixin Extras
     maven { // Create Forge and Registrate Forge
         url = "https://maven.tterrag.com/"
         content {
@@ -48,6 +50,8 @@ dependencies {
     modImplementation("com.simibubi.create:create-${minecraft_version}:${create_forge_version}:slim") { transitive = false }
     modImplementation("com.tterrag.registrate:Registrate:${registrate_forge_version}")
     modImplementation("com.jozufozu.flywheel:flywheel-forge-${flywheel_forge_minecraft_version}:${flywheel_forge_version}")
+
+    modImplementation("com.lowdragmc.shimmer:Shimmer-forge:${minecraft_version}-${shimmer_version}")
 
     // Development QOL
 //    modLocalRuntime("mezz.jei:jei-${minecraft_version}-forge:${jei_forge_version}")

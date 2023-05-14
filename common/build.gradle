@@ -11,6 +11,7 @@ repositories {
     maven { url = "https://maven.cafeteria.dev/releases" } // Fake Player API
     maven { url = "https://maven.jamieswhiteshirt.com/libs-release" } // Reach Entity Attributes
     maven { url = "https://jitpack.io/" } // Mixin Extras, Fabric ASM
+    maven { url "https://maven.firstdarkdev.xyz/snapshots" } // Shimmer
 }
 
 dependencies {
@@ -25,6 +26,8 @@ dependencies {
     modCompileOnly("com.simibubi.create:create-fabric-${minecraft_version}:${create_fabric_version}")
     // required for proper remapping and compiling
     modCompileOnly("net.fabricmc.fabric-api:fabric-api:${fabric_api_version}")
+
+    modImplementation "com.lowdragmc.shimmer:Shimmer-common:${minecraft_version}-${shimmer_version}"
 
     // JourneyMap compat
     modCompileOnly("info.journeymap:journeymap-api:${journeymap_api_version}-fabric-SNAPSHOT")

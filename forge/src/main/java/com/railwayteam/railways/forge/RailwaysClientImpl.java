@@ -3,7 +3,7 @@ package com.railwayteam.railways.forge;
 import com.mojang.brigadier.CommandDispatcher;
 import com.railwayteam.railways.Railways;
 import com.railwayteam.railways.RailwaysClient;
-import com.railwayteam.railways.compat.CompatHandler;
+import com.railwayteam.railways.compat.Mods;
 import com.railwayteam.railways.compat.shimmer.ShimmerCompat;
 import com.simibubi.create.foundation.ModFilePackResources;
 import net.minecraft.client.model.geom.ModelLayerLocation;
@@ -100,7 +100,7 @@ public class RailwaysClientImpl {
 
 	@SubscribeEvent
 	public static void clientSetup(final FMLClientSetupEvent event) {
-		if (CompatHandler.SHIMMER) {
+		if (Mods.SHIMMER.isLoaded) {
 			event.enqueueWork(ShimmerCompat::init);
 		}
 	}

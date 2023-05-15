@@ -56,6 +56,7 @@ public abstract class TrackCouplerBlock extends Block implements ITE<TrackCouple
 	 * Implementing/overriding is fine.
 	 */
 	@Override
+	@Deprecated
 	public boolean hasAnalogOutputSignal(@NotNull BlockState state) {
 		return true;
 	}
@@ -66,6 +67,7 @@ public abstract class TrackCouplerBlock extends Block implements ITE<TrackCouple
 	 * Implementing/overriding is fine.
 	 */
 	@Override
+	@Deprecated
 	public int getAnalogOutputSignal(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos) {
 		if (level.getBlockEntity(pos) instanceof TrackCouplerTileEntity te)
 			return te.getTargetAnalogOutput();

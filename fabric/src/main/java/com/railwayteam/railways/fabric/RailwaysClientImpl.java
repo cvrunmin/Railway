@@ -3,7 +3,7 @@ package com.railwayteam.railways.fabric;
 import com.mojang.brigadier.CommandDispatcher;
 import com.railwayteam.railways.Railways;
 import com.railwayteam.railways.RailwaysClient;
-import com.railwayteam.railways.compat.CompatHandler;
+import com.railwayteam.railways.compat.Mods;
 import com.railwayteam.railways.compat.shimmer.ShimmerCompat;
 import com.railwayteam.railways.content.conductor.fabric.ConductorCapItemRenderer;
 import com.railwayteam.railways.fabric.events.ClientEventsFabric;
@@ -30,10 +30,10 @@ public class RailwaysClientImpl implements ClientModInitializer {
 		ClientEventsFabric.init();
 		ConductorCapItemRenderer.register();
 
-//		if (CompatHandler.SHIMMER) {
-//			System.out.println("ShimmerLoadedFabric");
-//			ShimmerCompat.init();
-//		}
+		// Disabled due to issues on Fabric
+		//if (Mods.SHIMMER.isLoaded) {
+		//	ShimmerCompat.init();
+		//}
 	}
 
 	@SuppressWarnings({"unchecked", "rawtypes"}) // jank!

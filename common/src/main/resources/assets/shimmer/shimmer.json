@@ -3,12 +3,12 @@
     "test": { "r": 116, "g": 241, "b": 245, "a": 1 }
   },
   "Bloom": [
-    { "block": "minecraft:soul_lantern" }
+    { "block": "minecraft:lantern" }
   ],
   "LightBlock": [
-    { "block": "minecraft:soul_lantern", "color": "#test", "radius": 14 }
+    { "block": "minecraft:lantern", "color": "#test", "radius": 14 }
   ],
   "LightItem": [
-    { "item_id": "minecraft:soul_lantern", "color": "#test", "radius": 7 }
+    { "item_id": "minecraft:lantern", "color": "#test", "radius": 7 }
   ]
 }

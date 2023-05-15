@@ -75,9 +75,4 @@ public class RailwaysClient {
   public static void registerBuiltinPack(String id, String name) {
     throw new AssertionError();
   }
-
-  @ExpectPlatform
-  public static void clientSetup() {
-    throw new AssertionError();
-  }
 }

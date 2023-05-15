@@ -54,6 +54,7 @@ dependencies {
     modImplementation("com.lowdragmc.shimmer:Shimmer-forge:${minecraft_version}-${shimmer_version}")
 
     // Development QOL
+    modLocalRuntime("maven.modrinth:rubidium:${rubidium_version}")
 //    modLocalRuntime("mezz.jei:jei-${minecraft_version}-forge:${jei_forge_version}")
 
     // if you would like to add integration with JEI, uncomment this line.

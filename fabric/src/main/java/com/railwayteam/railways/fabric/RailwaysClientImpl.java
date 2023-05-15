@@ -30,9 +30,10 @@ public class RailwaysClientImpl implements ClientModInitializer {
 		ClientEventsFabric.init();
 		ConductorCapItemRenderer.register();
 
-		if (CompatHandler.SHIMMER) {
-			ShimmerCompat.init();
-		}
+//		if (CompatHandler.SHIMMER) {
+//			System.out.println("ShimmerLoadedFabric");
+//			ShimmerCompat.init();
+//		}
 	}
 
 	@SuppressWarnings({"unchecked", "rawtypes"}) // jank!

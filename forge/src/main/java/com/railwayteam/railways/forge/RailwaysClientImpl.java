@@ -33,6 +33,7 @@ public class RailwaysClientImpl {
 		RailwaysClient.init();
 		RailwaysImpl.bus.addListener(RailwaysClientImpl::onModelLayerRegistration);
 		RailwaysImpl.bus.addListener(RailwaysClientImpl::onBuiltinPackRegistration);
+		RailwaysImpl.bus.addListener(RailwaysClientImpl::clientSetup);
 	}
 
 	// region -- Client Commands ---
@@ -98,7 +99,7 @@ public class RailwaysClientImpl {
 	// endregion
 
 	@SubscribeEvent
-	public void clientSetup(final FMLClientSetupEvent event) {
+	public static void clientSetup(final FMLClientSetupEvent event) {
 		if (CompatHandler.SHIMMER) {
 			event.enqueueWork(ShimmerCompat::init);
 		}

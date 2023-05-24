@@ -36,6 +36,7 @@
     "MixinSignalBoundary",
     "MixinSlidingDoorMovementBehaviour",
     "MixinSlidingDoorTileEntity",
+    "MixinStandardBogeyTileEntity",
     "MixinStationBlock",
     "MixinStationEditPacket",
     "MixinStationTileEntity",
@@ -82,7 +83,8 @@
     "client.MixinTrackTargetingClient",
     "client.MixinTrainHatOffsets",
     "client.MixinTrainPacket",
-    "client.MixinTrainRelocatorClient"
+    "client.MixinTrainRelocatorClient",
+    "client.MixinBogeyTileEntityRenderer"
   ],
   "injectors": {
     "defaultRequire": 1

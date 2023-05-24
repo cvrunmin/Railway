@@ -1,5 +1,6 @@
 package com.railwayteam.railways.ponder;
 
+import com.railwayteam.railways.content.coupling.coupler.TrackCouplerBlock;
 import com.railwayteam.railways.content.coupling.coupler.TrackCouplerTileEntity;
 import com.railwayteam.railways.mixin_interfaces.IStandardBogeyTEVirtualCoupling;
 import com.railwayteam.railways.registry.CRBlocks;
@@ -445,6 +446,25 @@ public class TrainScenes {
         }
 
         scene.idle(30);
+
+        // show mode cycling with a wrench
+
+        scene.overlay.showControls(new InputWindowElement(couplerTop, Pointing.DOWN).rightClick()
+                .withWrench(), 60);
+        scene.idle(5);
+
+        scene.overlay.showText(70)
+            .pointAt(couplerTop)
+            .placeNearTarget()
+            .colored(PonderPalette.GREEN)
+            .attachKeyFrame()
+            .text("By using a wrench you can cycle between coupling, decoupling, and both modes");
+        scene.idle(80);
+
+        for (int i = 0; i < 3; i++) {
+            scene.world.modifyBlock(couplerPos, s -> s.cycle(TrackCouplerBlock.MODE), false);
+            scene.idle(15);
+        }
 
         // show station and explain use for alignment
         scene.world.showSection(station, Direction.DOWN);

@@ -69,9 +69,9 @@ public class Railways {
       MixinEnvironment.getCurrentEnvironment().audit();
   }
 
-  public static ResourceLocation asResource(String name) {
-		return new ResourceLocation(MODID, name);
-	}
+  public static ResourceLocation asResource(String path) {
+    return new ResourceLocation(MODID, path);
+  }
 
   public static void gatherData(DataGenerator gen) {
     REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, CRTagGen::generateBlockTags);
